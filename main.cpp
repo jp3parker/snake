@@ -18,7 +18,7 @@ int main() {
     info.listCoords.push_back(Coords2);
     
     info.directions.push_back('l');
-    piece = cv::imread("./Images/snakebody.jpg");
+    piece = cv::imread("./Images/snaketail.jpg");
     info.listI.push_back(piece);
     std::vector<short> Coords3{14*SQUAREDIMS, 12*SQUAREDIMS};
     info.listCoords.push_back(Coords3);

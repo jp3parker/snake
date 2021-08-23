@@ -96,7 +96,10 @@ bool SnakeData::moveSnake(char direction) {
                 listCoords[i][0] = listCoords[i-1][0];
                 listCoords[i][1] = listCoords[i-1][1];
             }
-            changeDirection(0, direction);
+            if (directions[0] != direction) {
+                changeDirection(0, direction);
+                changeDirection(1, direction);
+            }
             if (direction == 'u' and listCoords[0][1]-SQUAREDIMS >=0) {
                 listCoords[0][1]-=SQUAREDIMS;
             }
