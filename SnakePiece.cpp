@@ -2,7 +2,6 @@
 #include "SnakePiece.h"
 
 void SnakeData::changeDirection(short index, char newDirection) {
-    std::cout << "new direction is " << newDirection << std::endl;
     if (directions[index] != newDirection) {
         if ((directions[index] == 'l' and newDirection == 'u') or
             (directions[index] == 'u' and newDirection == 'r') or
@@ -19,7 +18,6 @@ void SnakeData::changeDirection(short index, char newDirection) {
             cv::transpose(listI[index], listI[index]);
             cv::flip(listI[index], listI[index], 1);
         }
-        std::cout << "changed piece " << index << " from " << directions[index] << " to " << newDirection << std::endl;
         directions[index] = newDirection;
     }
 }
@@ -94,7 +92,6 @@ bool SnakeData::moveSnake(char direction) {
         (direction == 'r' and directions[0] != 'l') or (direction == 'd' and directions[0] != 'u') or (direction == 'l' and directions[0] != 'r'))) {
         if(!this->gotApple(direction)) {
             for(int i=directions.size()-1; i>0; --i) {
-                std::cout << "changing piece " << i << " from " << directions[i] << " to " << directions[i-1] << std::endl;
                 changeDirection(i, directions[i-1]);
                 listCoords[i][0] = listCoords[i-1][0];
                 listCoords[i][1] = listCoords[i-1][1];
@@ -119,44 +116,3 @@ bool SnakeData::moveSnake(char direction) {
     }
     return keepGoing;
 }
-
-
-//bool SnakeData::moveSnake(char direction) {
-//    bool keepGoing = true;
-//    if (direction == directions[0] or ((direction == 'u' and directions[0] != 'd') or
-//        (direction == 'r' and directions[0] != 'l') or (direction == 'd' and directions[0] != 'u') or (direction == 'l' and directions[0] != 'r'))) {
-//        if(!this->gotApple(direction)) {
-//            for(int i=directions.size()-1; i>=0; --i) {
-//                if(i>1) {
-//                    changeDirection(i, directions[i-2]);
-//                    listCoords[i][0] = listCoords[i-1][0];
-//                    listCoords[i][1] = listCoords[i-1][1];
-//                }
-//                else if (i>0) {
-//                    changeDirection(i, directions[i-1]);
-//                    listCoords[i][0] = listCoords[i-1][0];
-//                    listCoords[i][1] = listCoords[i-1][1];
-//                }
-//                else {
-//                    changeDirection(i, direction);
-//                    if (direction == 'u' and listCoords[i][1]-SQUAREDIMS >=0) {
-//                        listCoords[i][1]-=SQUAREDIMS;
-//                    }
-//                    else if (direction == 'l' and listCoords[i][0]-SQUAREDIMS >= 0) {
-//                        listCoords[i][0]-=SQUAREDIMS;
-//                    }
-//                    else if (direction == 'd' and listCoords[i][1]+SQUAREDIMS <= 960) {
-//                        listCoords[i][1]+=SQUAREDIMS;
-//                    }
-//                    else if (direction == 'r' and listCoords[i][0]+SQUAREDIMS <= 960) {
-//                        listCoords[i][0]+=SQUAREDIMS;
-//                    }
-//                    else {
-//                        keepGoing = false;
-//                    }
-//                }
-//            }
-//        }
-//    }
-//    return keepGoing;
-//}

@@ -46,15 +46,8 @@ int main() {
             info.drawSnake();
         }
         else {
-            cv::waitKey();
+            cv::waitKey(0);
         }
-        
-        for (int i=0; i<info.directions.size(); ++i) {
-            std::cout << i << ": " << info.directions[i] << std::endl;
-        }
-        std::cout << "------------------------\n";
-        //cv::waitKey(0);
-        
         
     }
     

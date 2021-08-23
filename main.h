@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include "string.h"
-//#include "functions.h"
 #include "SnakePiece.h"
 
 #define SQUAREDIMS 40
